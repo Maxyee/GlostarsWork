@@ -10,7 +10,7 @@ using Microsoft.AspNet.SignalR.Messaging;
 
 namespace glostars.Controllers
 {
-    public class AdminReportController : Controller
+     public class AdminReportController : Controller
     {
         public ApplicationDbContext Db = new ApplicationDbContext();
 
@@ -25,14 +25,13 @@ namespace glostars.Controllers
             return View();
         }
 
-
         [HttpPost]
-        public ActionResult Login(Admin login, AdminLoginData data)
+        public ActionResult Login(AdminLoginData data)
         {
             if (ModelState.IsValid)
             {
-                var e = Db.Admins.Where(x => x.Email == login.Email && x.Password == login.Password).FirstOrDefault();
-
+                var edata = Db.Admins.FirstOrDefault(x => x.Email == data.Email && x.Password == data.Password);
+                
                 var timedata = new AdminLoginData
                 {
                     Email = data.Email,
@@ -41,7 +40,8 @@ namespace glostars.Controllers
                 Db.AdminLoginDatas.Add(timedata);
                 Db.SaveChanges();
 
-                if (e != null)
+                
+                if (edata != null)
                 {
                     Session["AdminIsLogedIn"] = true;
                     return RedirectToAction("Dashboard", "AdminProfile");
