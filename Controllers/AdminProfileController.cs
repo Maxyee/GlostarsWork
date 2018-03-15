@@ -20,7 +20,8 @@ namespace glostars.Controllers
 
         public ActionResult Dashboard()
         {
-            //var time = Db.AdminLoginDatas.Where(x=>x.Date)
+            var lastlogin = Db.AdminLoginDatas.OrderByDescending(e => e.ID).Skip(1).Take(1).FirstOrDefault();
+            ViewBag.LastData = lastlogin.Date;
             return View();
         }
 
