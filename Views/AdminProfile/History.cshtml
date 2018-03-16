@@ -112,8 +112,7 @@
                                     <th>Action</th>
                                 </tr>
                             </thead>
-                            <tbody>
-                            
+                            <tbody>                            
                                     @foreach (var data in datas)
                                     {
                                         <div>
@@ -138,9 +137,16 @@
                                         <td>1</td>
                                         <td>@data.ReportedUserName</td>
                                         <td>@data.UploadedUserName</td>
-                                        <td><img src="https://glostarstest.blob.core.windows.net/pictures/@pathpic" height="100" width="100" />@data.PictureId</td>
+                                        <td><img src="https://glostarstest.blob.core.windows.net/pictures/@pathpic" height="100" width="100" /></td>
                                         @*<td><img src="https://glostarstest.blob.core.windows.net/pictures/1.jpg" height="100" width="100" /></td>*@
-                                        <td><button type="button" class="btn btn-danger">Unhide</button></td>
+                                        @using (Html.BeginForm("FalseAction", "AdminProfile", FormMethod.Post))
+                                        {
+                                            <input type="hidden" name="reportid" value="@data.ID" />
+                                            <input type="hidden" name="action" value="false" />                                        
+                                            <td><button type="submit" class="btn btn-danger">Unhide</button></td>
+                                        } 
+
+                                        
                                     </tr>
                                     }
                                

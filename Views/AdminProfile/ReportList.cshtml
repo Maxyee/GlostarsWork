@@ -143,26 +143,20 @@
                                             <td>1</td>
                                             <td>@data.ReportedUserName</td>
                                             <td>@data.UploadedUserName</td>
-                                            <td><img src="https://glostarstest.blob.core.windows.net/pictures/@pathpic" height="100" width="100" />@data.PictureId</td>
+                                            <td><img src="https://glostarstest.blob.core.windows.net/pictures/@pathpic" height="100" width="100" /></td>
                                             @*<td><img src="https://glostarstest.blob.core.windows.net/pictures/1.jpg" height="100" width="100" /></td>*@
-                                            <td><button type="button" class="btn btn-default">Hide</button></td>
+                                            @using (Html.BeginForm("Action","AdminProfile",FormMethod.Post))
+                                            {
+                                                <input type="hidden" name="reportid" value="@data.ID"/>
+                                                <input type="hidden" name="action" value="true"/>
+                                                <td><button type="submit" class="btn btn-default">Hide</button></td>
+                                            }                                           
                                         </tr>
                                     }
                                     
                                 </tbody>
                             </table>
-                            <script>
-                                function getName() {
-                                    var fullpath = document.getElementById("img1").src;
-                                    var index = fullpath.lastIndexOf("/");
-                                    var filename = fullpath;
-                                    if (index !== -1) {
-                                        filename = fullpath.substring(index + 1, fullpath.length);
-                                    }
-                                    document.getElementById("result").value = filename;
-                                }                       
-                            </script>
-
+                            
                         </div>
                         @* ............. *@
                         <div class="card-columns">

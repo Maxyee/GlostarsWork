@@ -30,7 +30,7 @@ namespace glostars.Controllers
 
         public ActionResult ReportList()
         {       
-            var data = Db.UserReports.ToList();
+            var data = Db.UserReports.Where(x=>x.Action == false).ToList();
             ViewBag.Alldata = data;
 
             var pictable = Db.Pictures.ToList();
@@ -60,6 +60,56 @@ namespace glostars.Controllers
         public ActionResult Settings()
         {
             return View();
+        }
+
+        //method for changing action of a report
+        [HttpPost]
+        public ActionResult Action(int reportid, bool action)
+        {
+            int id = reportid;
+            //bool result = action;
+
+            var usrrpt = Db.UserReports.ToList();
+
+            var query = (from m in usrrpt
+                where m.ID == id
+                select m).First();
+
+            query.Action = action;
+            Db.SaveChanges();
+            //var user = new UserReport() {ID = reportid, Action = action};
+
+            //if (id != null)
+            //{
+            //    Db.UserReports.Attach(user);
+            //    Db.Entry(user).Property(x=> x.)
+            //}
+            
+            return RedirectToAction("ReportList");
+        }
+
+        public ActionResult FalseAction(int reportid, bool action)
+        {
+            int id = reportid;
+            //bool result = action;
+
+            var usrrpt = Db.UserReports.ToList();
+
+            var query = (from m in usrrpt
+                         where m.ID == id
+                         select m).First();
+
+            query.Action = action;
+            Db.SaveChanges();
+            //var user = new UserReport() {ID = reportid, Action = action};
+
+            //if (id != null)
+            //{
+            //    Db.UserReports.Attach(user);
+            //    Db.Entry(user).Property(x=> x.)
+            //}
+
+            return RedirectToAction("History");
         }
 	}
 }
