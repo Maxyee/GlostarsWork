@@ -56,17 +56,22 @@ namespace glostars.Controllers.Api
         }
 
         [HttpGet]
-        public string EmailCheckSendCode(string email)
+        public async Task<HttpResponseMessage> EmailSendCode(string email)
         {
             //ApplicationUser user = _db.Users.Find(email);
             var user = _db.Users.FirstOrDefault(x => x.Email == email);
             if (user == null)
-            {
-                return JsonConvert.SerializeObject(new
+            {                
+                var responseMsg = new HttpResponseMessage
                 {
-                    result = false,
-                    Msg = "Email Doesn't exist in Database."
-                });
+                    Content = new StringContent(new JavaScriptSerializer().Serialize(new
+                    {
+                        result = false,
+                        message = "Email Doesn't exist in Database."
+
+                    }), Encoding.UTF8, "application/json")
+                };
+                return responseMsg;
             }
             else
             {
@@ -80,16 +85,23 @@ namespace glostars.Controllers.Api
                 string code = UserManager.GenerateEmailConfirmationToken(user.Id);
                 UserManager.SendEmail(user.Id,"Forget Password Verification Code",
                     "Forget Your password ? Please use this code for active your account.<h1>" + x + "</h1>");
-                return JsonConvert.SerializeObject(new
+               
+                var responseMsg = new HttpResponseMessage
                 {
-                    result = true,
-                    Msg = "Sucessfully sent email with verfication code."
-                });
+                    Content = new StringContent(new JavaScriptSerializer().Serialize(new
+                    {
+                        result = true,
+                        message = "Sucessfully sent email with verfication code."
+
+                    }), Encoding.UTF8, "application/json")
+                };
+                return responseMsg;
+                
             }
         }
 
         [HttpGet]
-        public string SendCodeAgainForEmail(string email)
+        public async Task<HttpResponseMessage> SendCodeAgainEmail(string email)
         {
             
             Random random = new Random();
@@ -99,12 +111,19 @@ namespace glostars.Controllers.Api
             var user = _db.Users.FirstOrDefault(j => j.Email == email);
             if (user == null)
             {
-                return JsonConvert.SerializeObject(new
+              
+                var responseMsg = new HttpResponseMessage
                 {
-                    result = false,
-                    ErrorMsg = "No user found."
-                });
+                    Content = new StringContent(new JavaScriptSerializer().Serialize(new
+                    {
+                        result = false,
+                        message = "No user found."
+
+                    }), Encoding.UTF8, "application/json")
+                };
+                return responseMsg;
             }
+
             user.SecurityToken = x;
             _db.SaveChanges();
             Debug.WriteLine("Active code: " + x);
@@ -112,15 +131,22 @@ namespace glostars.Controllers.Api
             string code = UserManager.GenerateEmailConfirmationToken(user.Id);
             UserManager.SendEmail(user.Id, "Forget Password Verification Code",
                     "Forget Your password ? Please use this code for active your account.<h1>" + x + "</h1>");
-            return JsonConvert.SerializeObject(new
+            
+
+            var responseMsgsuccess = new HttpResponseMessage
             {
-                result = true,
-                Msg = "Successfully sent email."
-            });
+                Content = new StringContent(new JavaScriptSerializer().Serialize(new
+                {
+                    result = true,
+                    message = "Sucessfully sent email with verfication code again."
+
+                }), Encoding.UTF8, "application/json")
+            };
+            return responseMsgsuccess;
         }
 
         [HttpPost]
-        public async Task<HttpResponseMessage> ChangePassword(string email, string password)
+        public async Task<HttpResponseMessage> Password(string email, string password)
         {
             var model = _db.Users.FirstOrDefault(x => x.Email == email);
             if (model == null)
@@ -129,8 +155,8 @@ namespace glostars.Controllers.Api
                 {
                     Content = new StringContent(new JavaScriptSerializer().Serialize(new
                     {
-                        res = false,
-                        msg = "email not found"
+                        result = false,
+                        message = "email not found"
 
                     }), Encoding.UTF8, "application/json")
                 };
@@ -143,8 +169,8 @@ namespace glostars.Controllers.Api
             {
                 Content = new StringContent(new JavaScriptSerializer().Serialize(new
                 {
-                    res = true,
-                    msg = "Successfully changed the password"
+                    result = true,
+                    message = "Successfully changed the password"
 
                 }), Encoding.UTF8, "application/json")
             };
@@ -153,7 +179,7 @@ namespace glostars.Controllers.Api
 
 
         [HttpGet]
-        public async Task<HttpResponseMessage> ForgetConfirmCode(string email, int confirmCode)
+        public async Task<HttpResponseMessage> ForgetConfirm(string email, int confirmCode)
         {
             var user = _db.Users.FirstOrDefault(x => x.Email == email);
             if (user == null)
@@ -162,8 +188,8 @@ namespace glostars.Controllers.Api
                 {
                     Content = new StringContent(new JavaScriptSerializer().Serialize(new
                     {
-                        res = false,
-                        msg = "email not found"
+                        result = false,
+                        message = "email not found"
 
                     }), Encoding.UTF8, "application/json")
                 };
@@ -187,8 +213,8 @@ namespace glostars.Controllers.Api
                     {
                         Content = new StringContent(new JavaScriptSerializer().Serialize(new
                         {
-                            res = true,
-                            msg = "Confarmation Code Matched Successfully"
+                            result = true,
+                            message = "Confarmation Code Matched Successfully"
 
                         }), Encoding.UTF8, "application/json")
                     };
@@ -198,8 +224,8 @@ namespace glostars.Controllers.Api
                 {
                     Content = new StringContent(new JavaScriptSerializer().Serialize(new
                     {
-                        res = true,
-                        msg = "Wrong Code"
+                        result = false,
+                        message = "Wrong Code"
 
                     }), Encoding.UTF8, "application/json")
                 };
@@ -210,8 +236,8 @@ namespace glostars.Controllers.Api
             {
                 Content = new StringContent(new JavaScriptSerializer().Serialize(new
                 {
-                    res = true,
-                    msg = "Wrong Code"
+                    result = false,
+                    message = "Wrong Code"
 
                 }), Encoding.UTF8, "application/json")
             };
