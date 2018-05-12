@@ -1,0 +1,265 @@
+@using Resources
+@{
+    ViewBag.Title = "LandingPage";
+    Layout = "~/Views/Shared/_Layout_simple2.cshtml";
+}
+
+<div class="signupPortion" style="padding-top: 80px;">
+    <h1 style="text-shadow: 0 0 10px #640064">Experience best in photosharing!</h1>
+    <h3 style="text-shadow: 0 0 10px #640064">Share everyday moments, win prize</h3>
+    <button type="button" class="btn login-button Signup" data-toggle="modal" data-target="#ModelName" aria-hidden="true">
+        Sign up
+    </button>
+</div>
+
+@Html.Partial("signup2")
+
+<div class="container">
+    <div class=" Ppart">
+        <section>
+            <div class="item-1">           
+                <img src="~/Content/profilePage/landingpagephoto/first.png" class="Pimage1" />
+                <p class="P2">
+                    <b style="font-size:17px;">Tired of uploading photos and not getting anything in return?</b>
+                    <br />
+                    <span style="font-size: 15px;">
+                        Sign up, upload your favourite photos and take a shot in our constantly running photo competition. Prizes are
+                        given away weekly, monthly and at the end of four-month period there is a final with prizes for top 5 rated
+                        photos. We don’t have any judges, photos are rated by the user community itself.
+                    </span>
+                    <br>
+                    @*<a href="#" class="Edit">Learn more</a>*@
+                </p>
+
+            </div>
+        </section>
+        <hr>
+        <section>
+            <div class="item-2">              
+                <img src="~/Content/profilePage/landingpagephoto/secound.png" class="Pimage" />
+                <p class="ptext">
+                    <b style="font-size: 17px;">Are you looking for a way to get yourself known?</b>
+                    <br />
+                    <span style="font-size: 15px;">
+                        At the end of the four-month period International Photo Exhbition is organized with 50 top rated photos from
+                        all over the world. Mobile camera is enough to succeed, all you need is a moment to capture and a little
+                        bit of creativity.
+                    </span>
+                    <br>
+                    @*<a href="#" class="Edit">Learn more</a>*@
+                </p>
+
+            </div>
+        </section>
+        <hr>
+        <section>
+            <div class="item-3">             
+                <img src="~/Content/profilePage/landingpagephoto/third.png" class="Pimage1" />
+                <p class="P2">
+                    <b style="font-size: 17px;">Do you want to explore new places and connect with new people?</b>
+                    <br />
+                    <span style="font-size: 15px;">
+                        Join our growing international community, we have users from all over the world. Enjoy the views captured
+                        by people with different backgrounds and skill levels. Everybody is welcome!
+                    </span>
+                    <br>
+                    @*<a href="#" class="Edit">Learn more</a>*@
+                </p>
+            </div>
+        </section>
+
+    </div>
+</div>
+
+
+<br>
+
+<div class="foot">
+    <div class="mainfooter">
+
+        <div class="footer1">
+            <a href="/Account/AboutUs" class="F1">@Content.About</a>
+            <a href="/Account/Media" class="F1">@Content.Media</a>
+            <a href="/Account/FAQ" class="F1">@Content.FAQs</a>
+            <a href="/Account/Index" class="F1">@Content.Contact</a>
+        </div>
+
+
+        <div class="footer2ndPart">
+
+            <div class="footer2">
+
+                <div class="follow">
+                    Follow us
+                </div>
+                <div class="foollowIcons">
+                    <a href="https://www.facebook.com/Glostars/"><img src="~/Content/NewDesign/LPIcons/FB.png" class="footericonsF"></a>
+                    <a href="https://www.instagram.com/glostars_official/"><img src="~/Content/NewDesign/LPIcons/INST.png" class="footericonsIST"></a>
+                    <a href="https://twitter.com/GlostarsLtd"><img src="~/Content/NewDesign/LPIcons/TW.png" class="footericons"></a>
+                    <a href="https://vk.com/glostars"><img src="~/Content/NewDesign/LPIcons/VK.png" class="footericons"></a>
+                    <a href="https://plus.google.com/+Glostars"><img src="~/Content/NewDesign/LPIcons/Gplus.png" class="footericons"></a>
+                    <a href="https://www.youtube.com/channel/UC-TsszNCBj6QbmLvRwczGLQ"><img src="~/Content/NewDesign/LPIcons/YT.png" class="footericons"></a>
+                </div>
+            </div>
+
+
+            <div class="footer3">
+                <div class="DownloadApp">Download the App</div>
+                <div class="AppIcons">
+                    @*<a href="#"><img src="~/Content/NewDesign/LPIcons/Apple.png" class="footericons"></a>*@
+                    <a href="https://play.google.com/store/apps/details?id=com.golstars.www.glostars"><img src="~/Content/NewDesign/LPIcons/Android.png" class="footericons"></a>
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <div class="terms">
+        <a href="/Data/Terms" class="TR">Terms</a>
+        <a href="/Data/Index" class="TR">Privacy</a>
+        <a class="TR" style="color: #8B8989;">&copy;Glostars 2017</a>
+    </div>
+    
+    
+    <div class="modal fade modal-md" id="ModelNameTerm" tabindex="-1" role="dialog" aria-labelledby="ModelNameLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+
+                <div class="modal-header">
+                    <h5 class="HeaderOfSignup"></h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+
+
+               
+                <div class="container PopupSignup">
+                    <h5 class="HeaderOfSignup"><b>Terms of Use</b></h5>
+                    
+                    <div>
+                        1. Minimum age for using the Service is 13.
+                        <br />
+                        2. You may not post violent, nude, partially nude, discriminatory, unlawful, infringing, hateful,
+
+                        pornographic or sexually suggestive photos or other similar content via the Service.
+                        <br />
+
+                        3.	While uploading any picture please use your common sense
+                        <br />
+
+                        4.	You are responsible for any activity that occurs through your account and you agree you will not sell,
+
+                        transfer, license or assign your account, followers, username, or any account rights. You also agree that all
+
+                        information you provide or provided to Glostars upon registration and at all other times is true, accurate, current
+
+                        and complete and you agree to update your information as necessary to maintain its truth and accuracy.
+                        <br />
+
+                        5. You agree that you will not ask, collect or use the login credentials of other Glostars users.
+                        <br />
+
+                        6. You are responsible for keeping your log in credentials secret and secure.
+                        <br />
+
+                        7. You must not defame, stalk, bully, abuse, harass, threaten, impersonate or intimidate people or entities and
+
+                        you must not post private or confidential information via the Service, including, without limitation, your or any other
+
+                        person's credit card information, social security or alternate national identity numbers, non-public phone numbers or non-public
+
+                        email addresses.
+                        <br />
+
+                        8. You may not use the Service for any illegal or unauthorized purpose. You agree to comply with all laws, rules and regulations
+
+                        (for example, federal, state, local and provincial) applicable to your use of the Service and your Content (defined below), including but
+
+                        not limited to, copyright laws.
+                        <br />
+
+                        9.	You are solely responsible for your conduct and any data, text, files, information, usernames, images, graphics, photos, profiles, audio
+
+                        and video clips, sounds, musical works, works of authorship, applications, links and other content or materials (collectively, "Content") that
+
+                        you submit, post or display on or via the Service.
+                        <br />
+
+                        10. You must not change, modify, adapt or alter the Service or change, modify or alter another website so as to falsely imply that it is
+
+                        associated with the Service or Glostars.
+                        <br />
+
+                        11.	You must not create or submit unwanted email, comments, stars or other forms of commercial or harassing communications (a/k/a "spam") to any
+
+                        Glostars users.
+                        <br />
+
+                        12.	You must not use domain names or web URLs in your username without prior written consent from Glostars.
+                        <br />
+
+                        13. You must not interfere or disrupt the Service or servers or networks connected to the Service, including by transmitting any worms, viruses,
+
+                        spyware, malware or any other code of a destructive or disruptive nature. You may not inject content or code or otherwise alter or interfere with the way any
+
+                        Glostars page is rendered or displayed in a user's browser or device.
+                        <br />
+
+                        14. You must not create accounts with the Service through unauthorized means,
+
+                        including but not limited to, by using an automated device, script, bot, spider, crawler or scraper.
+                        <br />
+
+                        15.	You must not attempt to restrict another user from using or enjoying the Service and you must not
+
+                        encourage or facilitate violations of these Terms of Use or any other Glostars terms.
+                        <br />
+
+                        16.	Violation of these Terms of Use may, in Glostars's sole discretion, result in termination of your Glostars
+
+                        account. You understand and agree that Glostars cannot and will not be responsible for the Content posted on the
+
+                        Service and you use the Service at your own risk. If you violate the letter or spirit of these Terms of Use, or
+
+                        otherwise create risk or possible legal exposure for Glostars, we can stop providing all or part of the Service to you.
+                        <br />
+
+                        17.	Glostars may use the content for marketing purpose with the consent of owner.
+                        <br />
+                        <br />
+
+                        <strong>Service</strong> : Here the term service has been defined as the Glostars website
+
+                        offering facility to upload, host, share, star, report and delete picture; also the opportunity
+
+                        to compete for prizes based on the stars provided by the registered users.
+                    </div>
+
+                    <label class="date"><b>Date of birth</b></label>
+                    <div>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">Close</span>
+                        </button>
+                    </div>
+                  
+                    
+                </div>
+
+
+            </div>
+
+        </div>
+    </div>
+    
+    
+
+</div>
+
+
+
+
+<!-- jQuery first, then Tether, then Bootstrap JS. -->
+<script src="https://code.jquery.com/jquery-3.1.1.slim.min.js" integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
